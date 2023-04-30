@@ -35,8 +35,7 @@ function App() {
 
   return (
     <>
-      <Overlay usdtSymbols={symbols} />
-
+      <Overlay usdtSymbols={symbols} className="hidden" />
       <Navbar />
       <div className="max-w-md mx-auto h-screen w-screen flex items-center justify-stretch">
         <Container stockPrice={stockPrice} />

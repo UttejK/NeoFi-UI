@@ -20,7 +20,7 @@ function Container({ stockPrice }) {
         <span>Current value</span>
         <Binance stockPrice={stockPrice} />
       </div>
-      <div className="flex justify-center items-center my-16"> DROPDOWN </div>
+      <div className="flex justify-center items-center my-16"> DROPDOWN</div>
       <div className="block mb-8">
         <label htmlFor="" className="">
           Amount you want to invest
@@ -51,4 +51,3 @@ function Container({ stockPrice }) {
 }
 
 export default Container;
-  
