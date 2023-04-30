@@ -22,9 +22,30 @@
 }
 
 .search-input:has(> input:focus) {
-  border-color: red;
+  border-color: rgb(98 126 234 / var(--tw-text-opacity));
 }
 
+::-webkit-scrollbar {
+  width: 0.6rem;
+  border-radius: 0.5rem;
+  background-color: #0b0819;
+}
+
+@media (max-width: 512px) {
+  ::-webkit-scrollbar {
+    width: 0.25rem;
+    border-radius: 0.25rem;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #627eea;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3387d5;
+}
 /* .container {
   position: relative;
 }

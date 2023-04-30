@@ -1,6 +1,8 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
+
+import x from "cryptocurrency-icons/svg/color/eth.svg";
 
 const symbols = [
   { id: 1, symbol: "ETHUSDT", name: "Ethereum (ETH)" },
@@ -35,12 +37,37 @@ const symbols = [
   { id: 30, symbol: "XTZUSDT", name: "Tezos (XTZ)" },
 ];
 
-function Overlay({ className, onClose, setToken, ...props }) {
+function Overlay({ className, onClose, onChange, ...props }) {
+  const [sources, setSources] = useState({});
   const [search, setSearch] = useState("");
+
   function onTokenSelect(token) {
-    setToken(token);
+    onChange(token);
     onClose();
   }
+
+  useEffect(() => {
+    (async () =>
+      setSources(
+        (
+          await Promise.all(
+            symbols.map((symbol) =>
+              import(
+                `/node_modules/cryptocurrency-icons/svg/color/${symbol.symbol
+                  .slice(0, -4)
+                  .toLowerCase()}.svg`
+              )
+            )
+          )
+        ).reduce(
+          (sources, source, index) => ({
+            ...sources,
+            [symbols[index].symbol]: source.default,
+          }),
+          {}
+        )
+      ))();
+  }, []);
 
   return (
     <>
@@ -58,11 +85,11 @@ function Overlay({ className, onClose, setToken, ...props }) {
           className,
         ])}
       >
-        <div className=" w-full h-3/5 block top-8 text-white p-10 bg-[#181627] rounded-xl max-w-md z-20 relative ">
+        <div className=" w-[28rem] h-4/5 md:h-3/5 block top-8 text-white md:p-10 bg-[#181627] rounded-xl z-20 relative md:max-w-sm max-w-xs p-5">
           <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
-            <BiSearchAlt2 className="text-[#D2D2D2] text-3xl ml-4" />
+            <BiSearchAlt2 className="text-[#D2D2D2] text-xl md:text-3xl ml-4" />
             <input
-              className="focus:outline-none  peer-hover:border-[#6E56F8] focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] h-16 rounded-full border-none  "
+              className="focus:outline-none  peer-hover:border-[#6E56F8] focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] md:h-16 rounded-full border-none h-8"
               type="text"
               autoFocus
               onChange={(event) => setSearch(event.target.value)}
@@ -77,10 +104,15 @@ function Overlay({ className, onClose, setToken, ...props }) {
               )
               .map((n) => (
                 <button
-                  onClick={() => onTokenSelect(n.symbol.toLowerCase())}
-                  className="w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
+                  onClick={() => onTokenSelect(n)}
+                  className="text-left flex gap-2 items-center w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
                   key={n.id}
                 >
+                  <img
+                    className="w-[20px] h-[20px]"
+                    src={sources[n.symbol]}
+                    alt={n.name.slice(0, 3)}
+                  />
                   {n.name}
                 </button>
               ))}
