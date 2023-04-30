@@ -17,19 +17,27 @@
   background-image: url("https://placehold.co/70");
 }
 
-.container {
+.appearance-none {
+  -moz-appearance: textfield;
+}
+
+.search-input:has(> input:focus) {
+  border-color: red;
+}
+
+/* .container {
   position: relative;
 }
 
 .container::before {
   content: "";
   width: 448px;
-  /* height: calc(566px + 2rem); */
+  height: calc(566px + 2rem);
   position: absolute;
-  /* mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 80 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" style="fill: black" /></svg>')
+  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 80 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" style="fill: black" /></svg>')
       50% -40px/80px 80px no-repeat,
-    linear-gradient(white, white); */
+    linear-gradient(white, white);
   mask-composite: exclude;
   background: transparent;
   top: -2rem;
-}
+} */

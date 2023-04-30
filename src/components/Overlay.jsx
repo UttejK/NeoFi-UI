@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 const symbols = [
@@ -34,33 +35,55 @@ const symbols = [
   { id: 30, symbol: "XTZUSDT", name: "Tezos (XTZ)" },
 ];
 
-function Overlay({ className, ...props }) {
+function Overlay({ className, onClose, setToken, ...props }) {
+  const [search, setSearch] = useState("");
+  function onTokenSelect(token) {
+    setToken(token);
+    onClose();
+  }
+
   return (
     <>
       <div
+        onClick={onClose}
         className={clsx([
           "fixed h-screen w-screen bg-secondary/80 z-10 flex items-center justify-center ",
           className,
         ])}
         {...props}
+      />
+      <div
+        className={clsx([
+          "absolute top-1/2 left-1/2 h-screen -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center",
+          className,
+        ])}
       >
         <div className=" w-full h-3/5 block top-8 text-white p-10 bg-[#181627] rounded-xl max-w-md z-20 relative ">
-          <div className="flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4">
+          <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
             <BiSearchAlt2 className="text-[#D2D2D2] text-3xl ml-4" />
             <input
-              className="focus:outline-none focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] h-16 rounded-full border-none  "
+              className="focus:outline-none  peer-hover:border-[#6E56F8] focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] h-16 rounded-full border-none  "
               type="text"
+              autoFocus
+              onChange={(event) => setSearch(event.target.value)}
             />
           </div>
           <div className="overflow-y-scroll h-[90%]">
-            {symbols.map((n) => (
-              <button
-                className="w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
-                key={n.id}
-              >
-                {n.name}
-              </button>
-            ))}
+            {symbols
+              .filter((symbol) =>
+                search
+                  ? symbol.name.toLowerCase().includes(search.toLowerCase())
+                  : true
+              )
+              .map((n) => (
+                <button
+                  onClick={() => onTokenSelect(n.symbol.toLowerCase())}
+                  className="w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
+                  key={n.id}
+                >
+                  {n.name}
+                </button>
+              ))}
           </div>
         </div>
       </div>

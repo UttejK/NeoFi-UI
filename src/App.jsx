@@ -4,17 +4,23 @@ import Overlay from "./components/Overlay";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [symbols, setSymbols] = useState([]);
+  // const [symbols, setSymbols] = useState([]); // used while fetching the symbols from binance
+  const [showOverlay, setShowOverlay] = useState(false);
   const [stockPrice, setStockPrice] = useState();
+  const [token, setToken] = useState("ethusdt");
 
-  // useEffect(() => {
-  //   let ws = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade");
-  //   ws.onmessage = (event) => {
-  //     let stockPrice = JSON.parse(event.data);
-  //     //   console.log((parseFloat(stockPrice?.p) * 80).toFixed(2)); // Development only
-  //     setStockPrice(stockPrice);
-  //   };
-  // }, []); // do not leave commented
+  const onClose = () => setShowOverlay(false);
+
+  useEffect(() => {
+    let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${token}@trade`);
+    console.log(ws);
+    ws.onmessage = (event) => {
+      let stockPrice = JSON.parse(event.data);
+      setStockPrice(stockPrice);
+    };
+  }, []); // do not leave commented
+
+  // // fetching all the available tokens from binance
 
   // useEffect(() => {
   //   fetch("https://data.binance.com/api/v3/exchangeInfo")
@@ -36,8 +42,13 @@ function App() {
   return (
     <>
       <Navbar />
+      {showOverlay && <Overlay onClose={onClose} setToken={setToken} />}
       <div className="max-w-md mx-auto h-screen w-screen flex items-center justify-stretch">
-        <Container stockPrice={stockPrice} />
+        <Container
+          stockPrice={stockPrice}
+          showOverlay={showOverlay}
+          setShowOverlay={setShowOverlay}
+        />
       </div>
     </>
   );

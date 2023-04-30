@@ -3,10 +3,9 @@ import Binance from "./Binance";
 import Overlay from "./Overlay";
 import { useEffect, useState } from "react";
 
-function Container({ stockPrice }) {
+function Container({ stockPrice, showOverlay, setShowOverlay }) {
   const [inValue, setInValue] = useState("");
   let [outValue, setOutValue] = useState("");
-  const [showOverlay, setShowOverlay] = useState(false);
 
   function handleChange(event) {
     setInValue(event.target.value);
@@ -25,7 +24,7 @@ function Container({ stockPrice }) {
       </div>
       <button
         className="flex justify-center items-center  mt-2 mb-8 bg-background2 w-full h-16 rounded-xl"
-        onClick={setShowOverlay(true)}
+        onClick={() => setShowOverlay(!showOverlay)}
       >
         DROPDOWN
       </button>
