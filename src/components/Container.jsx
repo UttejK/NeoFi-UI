@@ -28,18 +28,23 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
   }, [token]);
 
   return (
-    <div className="container bg-secondary p-8 rounded-2xl w-full flex items-center flex-col">
+    <div className="container bg-secondary p-8 rounded-2xl md:w-full md:ml-0 flex items-center flex-col w-[90%] ml-[5%] md:min-h-auto min-h-3/4">
       <img
         src={iconSource}
         alt={token.name.slice(0, 3)}
-        className="w-[70px] h-[70px] mb-8 -translate-y-16 rounded-full"
+        className="w-[60px] h-[60px] box-content border-[10px] border-background2 -translate-y-[74px] rounded-full absolute hidden md:block"
       />
-      <div className="flex justify-between items-center mb-2 w-full">
+      <img
+        src="/NeoFi.svg"
+        alt="NeoFi_logo"
+        className="md:hidden block h-[75px] w-[75px] p-[7px] border-[10px] border-background2 -translate-y-[69px]  rounded-full absolute"
+      />
+      <div className="flex justify-between md:items-center items-start mb-2 w-full z-0 md:flex-row flex-col md:mt-0 mt-8">
         <span>Current value</span>
         <Binance stockPrice={stockPrice} />
       </div>
       <button
-        className="flex items-center text-left gap-2 pl-4  mt-2 mb-8 bg-background2 w-full h-16 rounded-xl"
+        className="flex items-center text-left gap-2 pl-4  mt-2 mb-8 bg-background2 w-full h-16 rounded-xl z-[1]"
         onClick={() => setShowOverlay(!showOverlay)}
       >
         <img
@@ -49,8 +54,11 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
         />
         {token.name}
       </button>
-      <div className="block mb-8">
-        <label htmlFor="" className="">
+      <div className="block mb-8 z-0">
+        <label
+          htmlFor=""
+          className="inline-block md:text-md text-sm md:mb-0 mb-3"
+        >
           Amount you want to invest
         </label>
         <input
@@ -61,8 +69,11 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
           onChange={(event) => setInValue(event.target.value)}
         />
       </div>
-      <div className="block mb-8">
-        <label htmlFor="" className="">
+      <div className="block mb-8 z-0">
+        <label
+          htmlFor=""
+          className="md:text-md text-sm md:mb-0 mb-3 inline-block"
+        >
           Estimate Number of ETH You will Get
         </label>
         <input
@@ -73,7 +84,9 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
           placeholder=""
         />
       </div>
-      <Button label="Buy" className="w-full " />
+      <div className="tdgrad w-full">
+        <Button label="Buy" className="w-full z-1 relative" />
+      </div>
     </div>
   );
 }

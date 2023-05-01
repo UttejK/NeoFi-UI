@@ -1,8 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
-
-import x from "cryptocurrency-icons/svg/color/eth.svg";
+import { BiSearchAlt2, BiCheck } from "react-icons/bi";
 
 const symbols = [
   { id: 1, symbol: "ETHUSDT", name: "Ethereum (ETH)" },
@@ -37,7 +35,7 @@ const symbols = [
   { id: 30, symbol: "XTZUSDT", name: "Tezos (XTZ)" },
 ];
 
-function Overlay({ className, onClose, onChange, ...props }) {
+function Overlay({ className, onClose, onChange, token, ...props }) {
   const [sources, setSources] = useState({});
   const [search, setSearch] = useState("");
 
@@ -114,6 +112,12 @@ function Overlay({ className, onClose, onChange, ...props }) {
                     alt={n.name.slice(0, 3)}
                   />
                   {n.name}
+
+                  {n.symbol === token.symbol && (
+                    <span className="ml-auto pr-5">
+                      <BiCheck className="h-6 w-6 text-green-300" />
+                    </span>
+                  )}
                 </button>
               ))}
           </div>

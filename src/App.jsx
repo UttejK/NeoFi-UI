@@ -76,6 +76,7 @@ function App() {
       <Navbar />
       {showOverlay && (
         <Overlay
+          token={token}
           onClose={onClose}
           onChange={(token) => {
             console.log("setting", token);
@@ -83,7 +84,7 @@ function App() {
           }}
         />
       )}
-      <div className="max-w-md mx-auto h-screen w-screen flex items-center justify-stretch">
+      <div className="max-w-md mx-auto h-screen w-screen flex items-center justify-stretch ">
         <Container
           stockPrice={stockPrice}
           showOverlay={showOverlay}

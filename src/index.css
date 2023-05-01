@@ -47,24 +47,78 @@
   background-color: #3387d5;
 }
 
-/* .Logo {
-  color: transparent;
-  background-image: linear-gradient();
-} */
-
-/* .container {
+.tdgrad {
+  color: #fff;
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 99rem;
   position: relative;
+}
+
+.tdgrad::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  margin: -1px !important;
+  border-radius: inherit !important;
+  background: linear-gradient(to bottom right, white, transparent);
+}
+.tdgrad1 {
+  color: #fff;
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.tdgrad1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px !important;
+  border-radius: inherit !important;
+  background: linear-gradient(to bottom right, white, transparent);
+}
+
+.container {
+  position: relative;
+  background: transparent;
 }
 
 .container::before {
   content: "";
-  width: 448px;
-  height: calc(566px + 2rem);
   position: absolute;
-  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 80 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" style="fill: black" /></svg>')
-      50% -40px/80px 80px no-repeat,
+  mask: url("round.svg") 50% 0px/134px 50px no-repeat,
     linear-gradient(white, white);
   mask-composite: exclude;
-  background: transparent;
-  top: -2rem;
-} */
+  background: rgb(11 8 25 / var(--tw-bg-opacity));
+  border-radius: 18px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px !important;
+  border-radius: inherit !important;
+  mask: url("round.svg") 50% 0px/134px 50px no-repeat,
+    linear-gradient(white, white);
+  mask-composite: exclude;
+  background: linear-gradient(to bottom, #46425e, rgba(0, 0, 0, 0));
+}
