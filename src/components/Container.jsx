@@ -19,7 +19,7 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
       setIconSource(
         (
           await import(
-            `/node_modules/cryptocurrency-icons/svg/color/${token.symbol
+            `../../node_modules/cryptocurrency-icons/svg/color/${token.symbol
               .slice(0, -4)
               .toLowerCase()}.svg`
           )

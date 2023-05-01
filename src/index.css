@@ -96,7 +96,7 @@
 .container::before {
   content: "";
   position: absolute;
-  mask: url("round.svg") 50% 0px/134px 50px no-repeat,
+  mask: url("/round.svg") 50% 0px/134px 50px no-repeat,
     linear-gradient(white, white);
   mask-composite: exclude;
   background: rgb(11 8 25 / var(--tw-bg-opacity));
@@ -117,7 +117,7 @@
   z-index: -1;
   margin: -1px !important;
   border-radius: inherit !important;
-  mask: url("round.svg") 50% 0px/134px 50px no-repeat,
+  mask: url("/round.svg") 50% 0px/134px 50px no-repeat,
     linear-gradient(white, white);
   mask-composite: exclude;
   background: linear-gradient(to bottom, #46425e, rgba(0, 0, 0, 0));

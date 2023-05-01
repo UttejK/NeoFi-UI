@@ -24,14 +24,12 @@ const symbols = [
   { id: 19, symbol: "VETUSDT", name: "VeChain (VET)" },
   { id: 20, symbol: "EOSUSDT", name: "EOS (EOS)" },
   { id: 21, symbol: "ATOMUSDT", name: "Cosmos (ATOM)" },
-  { id: 22, symbol: "FTMUSDT", name: "Fantom (FTM)" },
   { id: 23, symbol: "ONEUSDT", name: "Harmony (ONE)" },
   { id: 24, symbol: "ZECUSDT", name: "Zcash (ZEC)" },
   { id: 25, symbol: "ICPUSDT", name: "Internet Computer (ICP)" },
   { id: 26, symbol: "SUSHIUSDT", name: "SushiSwap (SUSHI)" },
   { id: 27, symbol: "ZILUSDT", name: "Zilliqa (ZIL)" },
   { id: 28, symbol: "KSMUSDT", name: "Kusama (KSM)" },
-  { id: 29, symbol: "LUNAUSDT", name: "Terra (LUNA)" },
   { id: 30, symbol: "XTZUSDT", name: "Tezos (XTZ)" },
 ];
 
@@ -52,7 +50,7 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
           await Promise.all(
             symbols.map((symbol) =>
               import(
-                `/node_modules/cryptocurrency-icons/svg/color/${symbol.symbol
+                `../../node_modules/cryptocurrency-icons/svg/color/${symbol.symbol
                   .slice(0, -4)
                   .toLowerCase()}.svg`
               )
