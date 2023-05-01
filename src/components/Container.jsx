@@ -37,7 +37,7 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
       <img
         src="/NeoFi.svg"
         alt="NeoFi_logo"
-        className="md:hidden block h-[75px] w-[75px] p-[7px] border-[10px] border-background2 -translate-y-[69px]  rounded-full absolute"
+        className="md:hidden block h-[80px] w-[80px] p-[10px] border-[10px] border-background2 -translate-y-[74px]  rounded-full absolute"
       />
       <div className="flex justify-between md:items-center items-start mb-2 w-full z-0 md:flex-row flex-col md:mt-0 mt-8">
         <span>Current value</span>

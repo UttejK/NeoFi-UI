@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiSearchAlt2, BiCheck } from "react-icons/bi";
 
 const symbols = [
@@ -38,6 +38,7 @@ const symbols = [
 function Overlay({ className, onClose, onChange, token, ...props }) {
   const [sources, setSources] = useState({});
   const [search, setSearch] = useState("");
+  const formRef = useRef(null);
 
   function onTokenSelect(token) {
     onChange(token);
@@ -79,11 +80,17 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
       />
       <div
         className={clsx([
-          "absolute top-1/2 left-1/2 h-screen -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center",
+          "fixed top-1/2 left-1/2 h-screen -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center",
           className,
         ])}
+        onClick={(event) => {
+          if (!formRef.current.contains(event.target)) onClose();
+        }}
       >
-        <div className=" w-[28rem] h-4/5 md:h-3/5 block top-8 text-white md:p-10 bg-[#181627] rounded-xl z-20 relative md:max-w-sm max-w-xs p-5">
+        <div
+          ref={formRef}
+          className=" w-[28rem] h-4/5 md:h-3/5 block top-8 text-white md:p-10 bg-[#181627] rounded-xl z-20 relative md:max-w-sm max-w-xs p-5"
+        >
           <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
             <BiSearchAlt2 className="text-[#D2D2D2] text-xl md:text-3xl ml-4" />
             <input
