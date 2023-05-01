@@ -85,46 +85,49 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
           if (!formRef.current.contains(event.target)) onClose();
         }}
       >
-        <div
-          ref={formRef}
-          className=" w-[28rem] h-4/5 md:h-3/5 block top-8 text-white md:p-10 bg-[#181627] rounded-xl z-20 relative md:max-w-sm max-w-xs p-5"
-        >
-          <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
-            <BiSearchAlt2 className="text-[#D2D2D2] text-xl md:text-3xl ml-4" />
-            <input
-              className="focus:outline-none  peer-hover:border-[#6E56F8] focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] md:h-16 rounded-full border-none h-8"
-              type="text"
-              autoFocus
-              onChange={(event) => setSearch(event.target.value)}
-            />
-          </div>
-          <div className="overflow-y-scroll h-[90%]">
-            {symbols
-              .filter((symbol) =>
-                search
-                  ? symbol.name.toLowerCase().includes(search.toLowerCase())
-                  : true
-              )
-              .map((n) => (
-                <button
-                  onClick={() => onTokenSelect(n)}
-                  className="text-left flex gap-2 items-center w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
-                  key={n.id}
-                >
-                  <img
-                    className="w-[20px] h-[20px]"
-                    src={sources[n.symbol]}
-                    alt={n.name.slice(0, 3)}
-                  />
-                  {n.name}
+        <div className="border-grad w-[28rem] h-4/5 md:h-3/5 block top-8 md:max-w-[410px] md:max-h-[460px] max-w-xs">
+          <div
+            ref={formRef}
+            className="text-white bg-[#181627] rounded-xl z-20 relative  p-11 w-full h-full md:p-10"
+          >
+            <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
+              <BiSearchAlt2 className="text-[#D2D2D2] text-xl md:text-3xl ml-4" />
+              <input
+                className="focus:outline-none font-normal text-sm peer-hover:border-[#6E56F8] focus:ring-0 w-full bg-[#181627] text-[#D2D2D2] md:h-16 rounded-full border-none h-8"
+                type="text"
+                autoFocus
+                placeholder="Search chains"
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </div>
+            <div className="overflow-y-scroll h-[80%]">
+              {symbols
+                .filter((symbol) =>
+                  search
+                    ? symbol.name.toLowerCase().includes(search.toLowerCase())
+                    : true
+                )
+                .map((n) => (
+                  <button
+                    onClick={() => onTokenSelect(n)}
+                    className="text-left px-4 text-sm font-normal flex gap-2 items-center w-full bg-inherit rounded-sm py-4 mb-1 focus:bg-[#1b192d] hover:bg-[#1b192d] "
+                    key={n.id}
+                  >
+                    <img
+                      className="w-[24px] h-[24px]"
+                      src={sources[n.symbol]}
+                      alt={n.name.slice(0, 3)}
+                    />
+                    {n.name}
 
-                  {n.symbol === token.symbol && (
-                    <span className="ml-auto pr-5">
-                      <BiCheck className="h-6 w-6 text-green-300" />
-                    </span>
-                  )}
-                </button>
-              ))}
+                    {n.symbol === token.symbol && (
+                      <span className="ml-auto pr-5">
+                        <BiCheck className="h-6 w-6 text-green-300" />
+                      </span>
+                    )}
+                  </button>
+                ))}
+            </div>
           </div>
         </div>
       </div>

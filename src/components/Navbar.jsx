@@ -12,7 +12,7 @@ function Navbar() {
       <div className="">
         <ul
           className={clsx([
-            "fixed h-full w-3/4 flex flex-col pt-16 bg-background2 items-center z-50 gap-[40px] list-none md:hidden",
+            "fixed h-full w-3/4 flex flex-col pt-16 bg-background2 items-center z-50 gap-[50px] list-none md:hidden",
             "transition-transform, duration-500 ease-in-out",
             show ? "translate-x-0" : "-translate-x-[300vw]",
           ])}
@@ -28,7 +28,10 @@ function Navbar() {
             />
           </label>
           <li>
-            <a href="" className="text-primary font-semibold">
+            <a
+              href=""
+              className="text-primary font-semibold border-b-2 border-solid border-primary"
+            >
               Trade
             </a>
           </li>
@@ -47,34 +50,43 @@ function Navbar() {
         <button onClick={() => setShow(true)} className="block md:hidden ">
           <GiHamburgerMenu className="w-6 h-6 fill-primary" />
         </button>
-        <div className="hidden md:flex items-center gap-x-4 font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-grad1 to-grad2">
+        <div className="hidden w-[250px] md:flex justify-start shrink-0 items-center gap-x-4 font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-grad1 to-grad2">
           <img
             src="/NeoFi.svg"
-            className="min-h-[32px] min-w-[25px] h-[32px] w-[25px]"
+            className="h-[32px] w-[25px] ml-4"
             alt="NeoFi_Logo"
           />
-          <p className="hidden md:inline-block">Neo Fi</p>
+          <p className="hidden md:inline-block">NeoFi</p>
         </div>
 
-        <ul className="md:flex justify-center items-center gap-[50px] list-none hidden ">
-          <li>
-            <a href="" className="text-primary font-semibold">
+        <ul className="nav-items md:flex justify-center items-center  list-none hidden ">
+          <li className="h-full align-middle ">
+            <a
+              href=""
+              className="text-primary font-semibold border-b-2 border-solid border-primary h-full align-middle pt-[30px] pb-[20px] px-5 text-center"
+            >
               Trade
             </a>
           </li>
           <li>
-            <a href="">Earn</a>
+            <a className="px-5" href="">
+              Earn
+            </a>
           </li>
           <li>
-            <a href="">Support</a>
+            <a className="px-5" href="">
+              Support
+            </a>
           </li>
           <li>
-            <a href="">About</a>
+            <a className="px-5" href="">
+              About
+            </a>
           </li>
         </ul>
 
-        <div className="tdgrad">
-          <Button label="Connect wallet" className="z-[1] relative" />
+        <div className="tdgrad  mr-[90px]">
+          <Button label="Connect wallet" className="z-[1] relative w-[160px]" />
         </div>
       </nav>
     </>
