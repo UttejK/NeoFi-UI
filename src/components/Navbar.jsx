@@ -12,7 +12,7 @@ function Navbar() {
       <div className="">
         <ul
           className={clsx([
-            "fixed h-full w-3/4 flex flex-col pt-16 bg-background2 items-center z-50 gap-[50px] list-none md:hidden",
+            "fixed h-full w-3/4 flex flex-col pl-16 pt-16 bg-background2 items-start z-50 gap-[50px] list-none md:hidden text-2xl ",
             "transition-transform, duration-500 ease-in-out",
             show ? "translate-x-0" : "-translate-x-[300vw]",
           ])}
@@ -20,13 +20,7 @@ function Navbar() {
           <button onClick={() => setShow(false)} className="block md:hidden ">
             <IoMdClose className="w-6 h-6 fill-primary fixed top-8 left-8" />
           </button>
-          <label htmlFor="">
-            <img
-              src="/NeoFi.svg"
-              className="min-h-[32px] min-w-[25px] h-[50px] w-[50px]"
-              alt="NeoFi_Logo"
-            />
-          </label>
+
           <li>
             <a
               href=""
@@ -85,7 +79,7 @@ function Navbar() {
           </li>
         </ul>
 
-        <div className="tdgrad  mr-[90px]">
+        <div className="tdgrad  lg:mr-[90px]">
           <Button label="Connect wallet" className="z-[1] relative w-[160px]" />
         </div>
       </nav>
