@@ -17,8 +17,8 @@
   gap: calc(50px - 2.5rem);
 }
 
-.input-field::after {
-  content: "INR";
+.input-field-right-label::after {
+  content: attr(data-content-right);
   translate: -2.5rem 0;
   width: 0;
 }

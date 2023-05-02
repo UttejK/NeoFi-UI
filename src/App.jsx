@@ -37,7 +37,7 @@ function App() {
       )
     );
     setStockPrice(null);
-  }, [token]); // do not leave commented
+  }, [token]);
 
   useEffect(
     () => {
@@ -52,25 +52,6 @@ function App() {
     }
   );
 
-  // // fetching all the available tokens from binance
-
-  // useEffect(() => {
-  //   fetch("https://data.binance.com/api/v3/exchangeInfo")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data?.symbols?.length) {
-  //         const usdtSymbols = [];
-  //         data.symbols.forEach(({ symbol }, i) => {
-  //           if (symbol.endsWith("USDT")) {
-  //             usdtSymbols.push(symbol);
-  //           }
-  //         });
-
-  //         setSymbols(usdtSymbols);
-  //       }
-  //     });
-  // }, []);
-
   return (
     <>
       <Navbar />
@@ -79,7 +60,6 @@ function App() {
           token={token}
           onClose={onClose}
           onChange={(token) => {
-            console.log("setting", token);
             setToken(token);
           }}
         />

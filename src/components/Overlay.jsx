@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-import { BiSearchAlt2, BiCheck } from "react-icons/bi";
-import { FcCheckmark } from "react-icons/fc";
+import { BiSearchAlt2 } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
+import { BsCheckLg } from "react-icons/bs";
 
 const symbols = [
   { id: 1, symbol: "ETHUSDT", name: "Ethereum (ETH)" },
@@ -133,9 +133,8 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
                     {n.name}
 
                     {n.symbol === token.symbol && (
-                      <span className="ml-auto pr-5">
-                        {/* <BiCheck className="h-6 w-8 text-green-300" /> */}
-                        <FcCheckmark className="h-6 w-6" />
+                      <span className="ml-auto pr-5 text-[#58ADAB]">
+                        <BsCheckLg size={20}></BsCheckLg>
                       </span>
                     )}
                   </button>
