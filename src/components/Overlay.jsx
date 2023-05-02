@@ -90,7 +90,7 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
         <div className="border-grad w-[28rem] h-4/5 md:h-3/5 md:max-w-[410px] md:max-h-[490px] max-w-xs">
           <div
             ref={formRef}
-            className="text-white bg-[#181627] rounded-md z-20 relative px-11 pb-11 pt-6 w-full h-full md:p-10"
+            className="text-white bg-[#181627] rounded-md z-20 relative px-4 md:px-11 pb-11 pt-6 w-full h-full md:p-10"
           >
             <button
               className="w-6 h-6 rounded-lg bg-[#6E56F8]/25 relative md:hidden mb-7 block ml-auto"
