@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { BiSearchAlt2, BiCheck } from "react-icons/bi";
 import { FcCheckmark } from "react-icons/fc";
+import { IoMdClose } from "react-icons/io";
 
 const symbols = [
   { id: 1, symbol: "ETHUSDT", name: "Ethereum (ETH)" },
@@ -86,11 +87,18 @@ function Overlay({ className, onClose, onChange, token, ...props }) {
           if (!formRef.current.contains(event.target)) onClose();
         }}
       >
-        <div className="border-grad w-[28rem] h-4/5 md:h-3/5 block md:max-w-[410px] md:max-h-[490px] max-w-xs">
+        <div className="border-grad w-[28rem] h-4/5 md:h-3/5 md:max-w-[410px] md:max-h-[490px] max-w-xs">
           <div
             ref={formRef}
-            className="text-white bg-[#181627] rounded-xl z-20 relative  p-11 w-full h-full md:p-10"
+            className="text-white bg-[#181627] rounded-md z-20 relative px-11 pb-11 pt-6 w-full h-full md:p-10"
           >
+            <button
+              className="w-6 h-6 rounded-lg bg-[#6E56F8]/25 relative md:hidden mb-7 block ml-auto"
+              onClick={onClose}
+            >
+              <IoMdClose className="w-4 h-4 ml-1 " />
+            </button>
+
             <div className="search-input flex items-center border-2 rounded-full border-[#6E56F8]/25 mb-4 ">
               <BiSearchAlt2 className="text-[#D2D2D2] text-xl md:text-3xl ml-4" />
               <input
