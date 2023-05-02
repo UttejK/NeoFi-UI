@@ -1,6 +1,7 @@
 import Button from "./Button";
 import Binance from "./Binance";
 import Overlay from "./Overlay";
+import { AiFillCaretDown } from "react-icons/ai";
 import { useEffect, useMemo, useState } from "react";
 
 function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
@@ -46,7 +47,7 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
         <Binance stockPrice={stockPrice} />
       </div>
       <button
-        className="flex items-center text-left gap-2 pl-4  mt-2 mb-6 bg-background2 w-full h-16 rounded-xl z-[1]"
+        className="downarrow flex items-center text-left gap-2 pl-4  mt-2 mb-6 bg-background2 w-full h-16 rounded-xl z-[1]"
         onClick={() => setShowOverlay(!showOverlay)}
       >
         <img
@@ -55,6 +56,7 @@ function Container({ stockPrice, showOverlay, setShowOverlay, token }) {
           alt={token.name.slice(0, 3)}
         />
         {token.name}
+        <AiFillCaretDown className="relative ml-auto mr-4 text-primary" />
       </button>
       <div className=" mb-6 z-0">
         <label
